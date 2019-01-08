@@ -1,0 +1,51 @@
+package com.example.demo.common.service;
+
+import com.example.demo.common.entity.BaseEntity;
+
+import java.util.List;
+
+/**
+ * <p>Description: 通用 Service 层 </p>
+ *
+ * @Created with IDEA
+ * @author: Yi-Xuan
+ * @Date: 2019/1/8 0008
+ * @Time: 18:52
+ */
+public interface BaseService<T extends BaseEntity> {
+
+    /**
+     *  删除
+     * @param t 实体类
+     * @return
+     */
+    int deleteById(T t);
+
+    /**
+     * 公共添加 方法
+     * @param t 实体类
+     * @return
+     */
+    int save(T t);
+
+    /**
+     * 通过id查询
+     * @param t 实体类
+     * @return
+     */
+    T findById(T t);
+
+    /**
+     * 分页查询所有
+     * @param
+     * @return
+     */
+    List<T> findAll(T t);
+
+    /**
+     * 修改
+     * @param t
+     * @return
+     */
+    int update(T t);
+}
