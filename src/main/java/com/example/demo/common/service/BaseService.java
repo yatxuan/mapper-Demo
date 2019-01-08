@@ -1,5 +1,6 @@
 package com.example.demo.common.service;
 
+import com.example.demo.common.entity.BaseEntity;
 import org.springframework.lang.Nullable;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @Date: 2019/1/8 0008
  * @Time: 18:52
  */
-public interface BaseService<T> {
+public interface BaseService<T extends BaseEntity> {
 
     /**
      *  删除

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * <p>Description: 描述 </p>
+ * <p>Description: 异常信息描述-枚举 </p>
  *
  * @Created with IDEA
  * @author: Yi-Xuan

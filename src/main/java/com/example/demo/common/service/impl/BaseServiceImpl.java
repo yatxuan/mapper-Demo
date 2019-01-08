@@ -1,16 +1,19 @@
 package com.example.demo.common.service.impl;
 
 import com.example.demo.common.dao.BaseDao;
+import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.service.BaseService;
+import com.example.demo.common.utils.IdWorker;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * <p>Description: 描述 </p>
+ * <p>Description: 通用Service </p>
  *
  * @Created with IDEA
  * @author: Yi-Xuan
@@ -19,9 +22,12 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class BaseServiceImpl<T, Mapper extends BaseDao<T>> implements BaseService<T> {
+public class BaseServiceImpl<T extends BaseEntity, Mapper extends BaseDao<T>> implements BaseService<T> {
 
     private Mapper mapper;
+
+    @Resource
+    private IdWorker idWorker;
 
     @Override
     public int deleteById(T t) {
@@ -30,6 +36,7 @@ public class BaseServiceImpl<T, Mapper extends BaseDao<T>> implements BaseServic
 
     @Override
     public int save(T t) {
+        t.setId(idWorker.nextId() + "");
         return this.getMapper().insert(t);
     }
 

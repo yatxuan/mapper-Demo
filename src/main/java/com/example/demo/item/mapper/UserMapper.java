@@ -1,7 +1,8 @@
 package com.example.demo.item.mapper;
 
+
 import com.example.demo.common.dao.BaseDao;
-import com.example.demo.item.pojo.Status;
+import com.example.demo.item.pojo.User;
 
 /**
  * <p>Description: 描述 </p>
@@ -11,5 +12,5 @@ import com.example.demo.item.pojo.Status;
  * @Date: 2019/1/8 0008
  * @Time: 20:32
  */
-public interface StatusMapper extends BaseDao<Status> {
+public interface UserMapper extends BaseDao<User> {
 }

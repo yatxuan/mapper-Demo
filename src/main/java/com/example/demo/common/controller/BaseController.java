@@ -1,5 +1,6 @@
 package com.example.demo.common.controller;
 
+import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.enums.ExceptionEnum;
 import com.example.demo.common.exception.BaseException;
 import com.example.demo.common.service.BaseService;
@@ -23,7 +24,7 @@ import java.util.List;
 @Getter
 @Setter
 @RestController
-public abstract class BaseController<T, Service extends BaseService<T>> {
+public abstract class BaseController<T extends BaseEntity, Service extends BaseService<T>> {
 
     private Service service;
 
@@ -35,6 +36,7 @@ public abstract class BaseController<T, Service extends BaseService<T>> {
      */
     @PostMapping("/save")
     public ResponseEntity<Integer> save(@RequestBody T t) {
+
         int save = this.getService().save(t);
 
         if (save <= 0) {
@@ -80,7 +82,7 @@ public abstract class BaseController<T, Service extends BaseService<T>> {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Integer> Update(@RequestBody T t) {
+    public ResponseEntity<Integer> update(@RequestBody T t) {
         int update = this.getService().update(t);
 
         if (update <= 0) {

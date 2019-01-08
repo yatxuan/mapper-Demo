@@ -1,13 +1,11 @@
 package com.example.demo.item.service.impl;
 
 import com.example.demo.common.service.impl.BaseServiceImpl;
-import com.example.demo.item.mapper.StatusMapper;
-import com.example.demo.item.pojo.Status;
+import com.example.demo.item.mapper.UserMapper;
+import com.example.demo.item.pojo.User;
 import com.example.demo.item.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * <p>Description: 描述 </p>
@@ -18,11 +16,11 @@ import javax.annotation.Resource;
  * @Time: 20:31
  */
 @Service
-public class StatusServiceImpl extends BaseServiceImpl<Status, StatusMapper> implements StatusService {
+public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implements StatusService {
 
     @Override
     @Autowired
-    public void setMapper(StatusMapper statusMapper) {
+    public void setMapper(UserMapper statusMapper) {
         super.setMapper(statusMapper);
     }
 }

@@ -4,7 +4,7 @@ import com.example.demo.common.enums.ExceptionEnum;
 import lombok.Data;
 
 /**
- * <p>Description: 描述 </p>
+ * <p>Description: 数据报错时，返回该实体类 </p>
  *
  * @Created with IDEA
  * @author: Yi-Xuan
