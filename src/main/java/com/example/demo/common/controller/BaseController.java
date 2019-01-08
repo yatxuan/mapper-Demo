@@ -34,7 +34,7 @@ public abstract class BaseController<T extends BaseEntity, Service extends BaseS
      * @param t 实体类
      * @return
      */
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Integer> save(@RequestBody T t) {
 
         int save = this.getService().save(t);
@@ -81,7 +81,7 @@ public abstract class BaseController<T extends BaseEntity, Service extends BaseS
         return ResponseEntity.ok(new PageInfo<>(list));
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<Integer> update(@RequestBody T t) {
         int update = this.getService().update(t);
 
@@ -92,7 +92,7 @@ public abstract class BaseController<T extends BaseEntity, Service extends BaseS
         return ResponseEntity.ok(update);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping
     public ResponseEntity<Integer> deleteById(@RequestBody T t) {
         int delete = this.getService().deleteById(t);
 
