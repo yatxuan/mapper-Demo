@@ -1,6 +1,5 @@
 package com.example.demo.item.pojo;
 
-import com.example.demo.common.entity.BaseEntity;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 
@@ -18,7 +17,7 @@ import javax.persistence.Table;
  */
 @Table
 @Data
-public class Status extends BaseEntity {
+public class Status {
 
     @Id
     @KeySql(useGeneratedKeys = true)

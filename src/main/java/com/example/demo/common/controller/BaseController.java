@@ -1,13 +1,11 @@
 package com.example.demo.common.controller;
 
-import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.enums.ExceptionEnum;
 import com.example.demo.common.exception.BaseException;
 import com.example.demo.common.service.BaseService;
 import com.github.pagehelper.PageInfo;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @RestController
-public abstract class BaseController<T extends BaseEntity, Service extends BaseService<T>> {
+public abstract class BaseController<T, Service extends BaseService<T>> {
 
     private Service service;
 
@@ -66,12 +64,14 @@ public abstract class BaseController<T extends BaseEntity, Service extends BaseS
     /**
      * 查询所有
      *
-     * @param t 实体类
+     * @param pageNum  当前页面
+     * @param pageSize 每页多少数据
      * @return
      */
     @GetMapping("/findAll")
-    public ResponseEntity<PageInfo<T>> findAll(T t) {
-        List<T> list = this.getService().findAll(t);
+    public ResponseEntity<PageInfo<T>> findAll(@RequestParam(name = "pageNum",required = false,defaultValue = "0") int pageNum,
+                                               @RequestParam(name = "pageSize",required = false,defaultValue = "15") int pageSize) {
+        List<T> list = this.getService().findAll(pageNum, pageSize);
 
         if (CollectionUtils.isEmpty(list)) {
             throw new BaseException(ExceptionEnum.QUERY_FAILED);
@@ -91,7 +91,7 @@ public abstract class BaseController<T extends BaseEntity, Service extends BaseS
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Integer> deleteById(@RequestBody T t){
+    public ResponseEntity<Integer> deleteById(@RequestBody T t) {
         int delete = this.getService().deleteById(t);
 
         if (delete <= 0) {

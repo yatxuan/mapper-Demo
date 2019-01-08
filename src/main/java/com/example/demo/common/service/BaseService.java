@@ -1,6 +1,6 @@
 package com.example.demo.common.service;
 
-import com.example.demo.common.entity.BaseEntity;
+import org.springframework.lang.Nullable;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @Date: 2019/1/8 0008
  * @Time: 18:52
  */
-public interface BaseService<T extends BaseEntity> {
+public interface BaseService<T> {
 
     /**
      *  删除
@@ -37,10 +37,12 @@ public interface BaseService<T extends BaseEntity> {
 
     /**
      * 分页查询所有
-     * @param
+     * @param pageNum 当前页面
+     * @param pageSize 每页多少数据
      * @return
      */
-    List<T> findAll(T t);
+    @Nullable
+    List<T> findAll(int pageNum,int pageSize);
 
     /**
      * 修改
